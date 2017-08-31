@@ -51,3 +51,28 @@ AND p.yr NOT IN
   FROM nobel c
   WHERE c.subject = 'Chemistry'
 )
+
+--8. simple way of answeing the 8th question without using subqueries and joins.
+--Show the physics winners for 1980 together with the winners for 1984.
+SELECT *
+FROM nobel
+WHERE (subject='Physics' AND yr=1980)
+OR (subject='Chemistry' AND yr=1984)
+
+-- 9.Show the winners for 1980 excluding the chemistry and medicine.
+SELECT 
+*FROM nobel WHERE yr=1980 
+AND 
+NOT (subject='Chemistry' OR subject='Medicine')
+
+--10. Show who won a 'Medicine' prize in an early year (before 1910, not including 1910) 
+--together with winners of a 'Literature' prize in a later year
+--(after 2004, including 2004).
+SELECT *
+FROM nobel
+WHERE (yr<1910 AND subject='Medicine')
+OR
+(yr>=2004 AND subject='Literature')
+
+   
+        
