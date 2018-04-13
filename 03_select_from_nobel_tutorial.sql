@@ -31,7 +31,7 @@ AND yr BETWEEN 1980 AND 1989
 -- 'Woodrow Wilson', 'Jed Bartlet', 'Jimmy Carter')
 SELECT *
 FROM nobel
-WHERE winner IN ('Theodore Roosevelt', 'Woodrow Wilson', 'Jed Bartlet',
+WHERE winner IN ('Barack Obama', 'Theodore Roosevelt', 'Woodrow Wilson', 'Jed Bartlet',
   'Jimmy Carter')
 
 -- 7. Show the winners with first name John
