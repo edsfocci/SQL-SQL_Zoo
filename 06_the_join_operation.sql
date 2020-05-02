@@ -80,11 +80,11 @@ GROUP BY game.id
 
 -- 13. List every match with the goals scored by each team as shown.
 -- Sort your result by mdate, matchid, team1 and team2.
-SELECT mdate,
-  team1,
-  SUM(CASE WHEN teamid=team1 THEN 1 ELSE 0 END) score1,
-  team2,
-  SUM(CASE WHEN teamid=team2 THEN 1 ELSE 0 END) score2
-FROM game JOIN goal ON goal.matchid = game.id
-GROUP BY game.id
-ORDER BY mdate, matchid, team1, team2
+SELECT game.mdate, game.team1, 
+SUM(CASE WHEN goal.teamid = game.team1 THEN 1 ELSE 0 END) AS score1,
+game.team2,
+SUM(CASE WHEN goal.teamid = game.team2 THEN 1 ELSE 0 END) AS score2
+
+FROM game LEFT JOIN goal ON matchid = id
+GROUP BY game.id,game.mdate, game.team1, game.team2 
+ORDER BY mdate,matchid,team1,team2
