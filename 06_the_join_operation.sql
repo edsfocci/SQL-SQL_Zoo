@@ -85,6 +85,6 @@ SELECT mdate,
   SUM(CASE WHEN teamid=team1 THEN 1 ELSE 0 END) score1,
   team2,
   SUM(CASE WHEN teamid=team2 THEN 1 ELSE 0 END) score2
-FROM game JOIN goal ON goal.matchid = game.id
+FROM game LEFT JOIN goal ON goal.matchid = game.id
 GROUP BY game.id
 ORDER BY mdate, matchid, team1, team2
